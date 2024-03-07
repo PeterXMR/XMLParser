@@ -93,7 +93,7 @@ public class ParseService {
 
     public MunicipalityDTO parse(String path)
             throws StreamReadException, DatabindException, IOException, ParserConfigurationException, SAXException {
-        File file = new File(Constants.XML_FILE_PATH);
+        File file = new File(Constants.XML_FILE_DIRECTORY);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(file);
