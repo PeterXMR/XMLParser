@@ -10,4 +10,3 @@ Docker - running
 Java 21
 
 OpenAPI docs: http://localhost:8085/swagger-ui/index.html
-# XMLParser
