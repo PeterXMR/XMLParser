@@ -14,9 +14,9 @@ import lombok.Data;
 public class District {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-    int code;
-    String name;
+    public Integer id;
+    public Integer code;
+    public String name;
     @Column(name = "municipality_code")
-    int municipalityCode;
+    public Integer municipalityCode;
 }

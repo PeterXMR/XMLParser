@@ -13,7 +13,7 @@ import lombok.Data;
 public class Municipality {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-    int code;
-    String name;
+    public Integer id;
+    public Integer code;
+    public String name;
 }

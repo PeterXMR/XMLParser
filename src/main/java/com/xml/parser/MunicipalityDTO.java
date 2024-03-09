@@ -9,6 +9,6 @@ import lombok.Data;
 
 @Data
 public class MunicipalityDTO {
-    List<Municipality> municipalities;
-    List<District> districts;
+    public List<Municipality> municipalities;
+    public List<District> districts;
 }

@@ -17,7 +17,7 @@ public class ParserController {
 
     @GetMapping("/test")
     public ResponseEntity<String> parseData() {
-        System.out.println(parseService.loadAndSaveMunicipalityDTO());
+        parseService.loadAndSaveMunicipalityDTO();
         return ResponseEntity.ok().body("Test was successfull.");
     }
 }

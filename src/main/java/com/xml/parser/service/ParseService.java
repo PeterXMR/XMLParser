@@ -74,25 +74,24 @@ public class ParseService {
             e.printStackTrace();
         }
 
-        saveMunicipality(dto);
-        return dto;
-    }
-
-    private void saveMunicipality(MunicipalityDTO dto) {
-        municipalityRepository.saveAll(dto.getMunicipalities());
-        districtRepository.saveAll(dto.getDistricts());
+        return saveMunicipalitiesAndDistricts(dto);
     }
 
     @SuppressWarnings("resource")
-    public static void unzipFolderZip4j(Path source, Path target)
+    private static void unzipFolderZip4j(Path source, Path target)
             throws IOException {
 
         new ZipFile(source.toFile())
                 .extractAll(target.toString());
     }
 
-    public MunicipalityDTO parse(String path)
-            throws StreamReadException, DatabindException, IOException, ParserConfigurationException, SAXException {
+    private MunicipalityDTO saveMunicipalitiesAndDistricts(MunicipalityDTO dto) {
+        municipalityRepository.saveAll(dto.getMunicipalities());
+        districtRepository.saveAll(dto.getDistricts());
+        return dto;
+    }
+
+    private MunicipalityDTO parse(String path) throws StreamReadException, DatabindException, IOException, ParserConfigurationException, SAXException {
         File file = new File(Constants.XML_FILE_DIRECTORY);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -127,6 +126,7 @@ public class ParseService {
         }
 
         dto.setMunicipalities(municipalityList);
+
         NodeList districtNodeList = doc.getElementsByTagName("vf:CastObce");
 
         for (int i = 0; i < districtNodeList.getLength(); ++i) {
